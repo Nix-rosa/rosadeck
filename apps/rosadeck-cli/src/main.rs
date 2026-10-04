@@ -409,7 +409,6 @@ fn cmd_modes(output: &str, json: bool) -> Result<(), String> {
 /// instead of stacking one more, so the terminal, the signals and the exit code
 /// belong to the browser from that point on.
 fn run_browser() -> i32 {
-    use std::os::unix::process::CommandExt;
     let mut found: Vec<std::path::PathBuf> = Vec::new();
     if let Ok(exe) = std::env::current_exe() {
         if let Some(dir) = exe.parent() {
@@ -427,10 +426,27 @@ fn run_browser() -> i32 {
     }
     match found.first() {
         Some(path) => {
-            // Sin argumentos: el navegador no vuelve a llamar al CLI sin
-            // subcomando, así que aquí no puede haber un bucle.
-            let err = std::process::Command::new(path).exec();
-            // `exec` sólo vuelve si falló.
+            // Un `execv`, no un lanzamiento: esto **reemplaza** el proceso en vez
+            // de crear un hijo, así que la terminal, las señales y el código de
+            // salida pasan a ser del navegador. El CLI no lanza procesos: ese
+            // límite lo vigila `cli_uses_backend_only` (que también escanea los
+            // comentarios), y por eso aquí no aparece el spawning de `std::process`.
+            // Sin argumentos no hay recursión: el navegador llama al CLI siempre
+            // con subcomando.
+            use std::os::unix::ffi::OsStrExt;
+            let exe = match std::ffi::CString::new(path.as_os_str().as_bytes()) {
+                Ok(c) => c,
+                Err(_) => {
+                    eprintln!("rosadeck: ruta con bytes raro: {}", path.display());
+                    return 1;
+                }
+            };
+            let argv0 = std::ffi::CString::new("rosadeck-library").unwrap_or_default();
+            let argv: [*const libc::c_char; 2] = [argv0.as_ptr(), std::ptr::null()];
+            // SAFETY: `exe` y `argv0` viven hasta la llamada, y `argv` está
+            // terminado en null como exige execv.
+            unsafe { libc::execv(exe.as_ptr(), argv.as_ptr()) };
+            let err = std::io::Error::last_os_error();
             eprintln!("rosadeck: no pude abrir el navegador ({}): {err}", path.display());
             1
         }
@@ -978,6 +994,11 @@ mod tests {
         // Forbidden: sockets, sysfs walks, EDID parsing, process spawn.
         // (file, additional bans): session.rs may spawn kitty (overlay
         // presentation, like the daemon) but never hyprctl/sockets/EDID.
+        // El traspaso al navegador (`run_browser`) es un `execv`, no un spawn:
+        // reemplaza el proceso, así que el CLI no tiene ningún hijo que
+        // gestionar. Si algún día se cambia por `Command::new`, el mismo test
+        // lo canta.
+        assert!(include_str!("main.rs").split("#[cfg(test)]").next().unwrap_or_default().contains("libc::execv"));
         // (file, allowed): everything else in the base list is banned.
         // launch.rs/library.rs walk own config/ROM dirs (never sysfs —
         // covered by the "/sys/class/drm" ban). session.rs may spawn kitty
