@@ -1,6 +1,10 @@
 # Compilación: pesa GB y se regenera con `cargo build --release`.
 /target/
 
+# Bytecode de Python: lo genera el intérprete y no va al repo.
+__pycache__/
+*.pyc
+
 # Ficheros de estado y del runtime (viven fuera del repo, pero por si acaso).
 *.tmp
 *.log

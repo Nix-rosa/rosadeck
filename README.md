@@ -3,6 +3,8 @@
 Un gestor de pantallas y emuladores para **Wayland/Hyprland**, con una
 biblioteca de juegos en terminal que se lee como un carrusel de carátulas.
 
+> un espacio para jugar emuladores de una manera rapida y facil, sin complicaciones
+
 ```
 rosadeck          # abre el navegador de la biblioteca (lo normal)
 rosadeck --help   # el CLI: play, library, displays, modes, duplicate, …
@@ -84,5 +86,4 @@ posiciones, anchos de columna, protocolo gráfico y las rutas de configuración.
 
 ## Licencia
 
-Por decidir: pon aquí la que corresponda (MIT, Apache-2.0, GPL-3.0…) antes de
-publicarlo.
+MIT — ver [`LICENSE`](LICENSE).
