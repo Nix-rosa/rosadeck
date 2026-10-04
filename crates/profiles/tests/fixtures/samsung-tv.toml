@@ -1,0 +1,13 @@
+[display]
+stable_id = "sdc-4161-01234567"
+alias = "samsung-tv"
+pnp = "SDC"
+product = "0x4161"
+edid_hash = "01234567"
+connector_hint = "HDMI-A-1"
+
+[preferred]
+mode = "external-only"
+resolution = "1920x1080"
+refresh = 120.0
+policy = "max-refresh"

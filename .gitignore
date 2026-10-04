@@ -1,0 +1,14 @@
+# Compilación: pesa GB y se regenera con `cargo build --release`.
+/target/
+
+# Ficheros de estado y del runtime (viven fuera del repo, pero por si acaso).
+*.tmp
+*.log
+*.bak
+*~
+.DS_Store
+
+# Editores
+.idea/
+.vscode/
+*.swp

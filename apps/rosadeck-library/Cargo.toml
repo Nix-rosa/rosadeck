@@ -1,0 +1,23 @@
+[package]
+name = "rosadeck-library"
+version = "0.1.0"
+edition = "2021"
+description = "Retro game library browser TUI for Rosadeck (presentation only)"
+
+[[bin]]
+name = "rosadeck-library"
+path = "src/main.rs"
+
+[dependencies]
+rosadeck-game-library = { path = "../../crates/game-library" }
+rosadeck-tui-frame = { path = "../../crates/tui-frame" }
+# Emulator availability for the detail pane: profiles are read, PATH is
+# resolved. No execution, no display backend.
+rosadeck-profiles = { path = "../../crates/profiles" }
+rosadeck-emulator-core = { path = "../../crates/emulator-core" }
+# Every decoder `image` ships (png, jpeg, webp, avif, gif, tiff, bmp, tga,
+# ico, qoi, pnm, dds, exr, hdr, farbfeld) plus AVIF decoding through the
+# system dav1d, so a cover may be in any of those formats.
+image = { version = "0.25", features = ["avif-native"] }
+serde_json = "1"
+crossterm = "0.29"

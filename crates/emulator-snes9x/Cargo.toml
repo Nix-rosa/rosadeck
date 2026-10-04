@@ -1,0 +1,8 @@
+[package]
+name = "rosadeck-emulator-snes9x"
+version = "0.1.0"
+edition = "2021"
+description = "Snes9x GTK adapter for Rosadeck (verified flags, never touches displays)"
+
+[dependencies]
+rosadeck-emulator-core = { path = "../emulator-core" }

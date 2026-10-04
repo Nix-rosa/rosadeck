@@ -1,0 +1,9 @@
+[package]
+name = "rosadeck-shader-manager"
+version = "0.1.0"
+edition = "2021"
+description = "Shader preset resolution for Rosadeck (paths only, no rendering, no config writes)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+toml = { version = "0.8", features = ["parse", "display"] }

@@ -1,0 +1,9 @@
+[package]
+name = "rosadeck-planner"
+version = "0.1.0"
+edition = "2021"
+description = "Pure display-plan construction and validation for Rosadeck (no IO, no Hyprland)"
+
+[dependencies]
+display-core = { path = "../display-core" }
+serde = { version = "1", features = ["derive"] }

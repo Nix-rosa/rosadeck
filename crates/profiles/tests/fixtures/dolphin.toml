@@ -1,0 +1,11 @@
+[emulator]
+id = "dolphin"
+name = "Dolphin"
+adapter = "dolphin"
+binary = "dolphin-emu"
+
+[launch]
+batch = true
+
+[graphics]
+vsync = true

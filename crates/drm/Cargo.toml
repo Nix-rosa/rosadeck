@@ -1,0 +1,8 @@
+[package]
+name = "rosadeck-drm"
+version = "0.1.0"
+edition = "2021"
+description = "Read-only DRM sysfs connector walk for Rosadeck (no writes, ever)"
+
+[dependencies]
+display-core = { path = "../display-core" }

@@ -1,0 +1,8 @@
+[package]
+name = "rosadeck-emulator-azahar"
+version = "0.1.0"
+edition = "2021"
+description = "Azahar adapter for Rosadeck (verified flags, never touches displays)"
+
+[dependencies]
+rosadeck-emulator-core = { path = "../emulator-core" }

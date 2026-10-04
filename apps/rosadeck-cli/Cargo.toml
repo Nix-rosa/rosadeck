@@ -1,0 +1,33 @@
+[package]
+name = "rosadeck-cli"
+version = "0.1.0"
+edition = "2021"
+description = "Read-only Rosadeck CLI (status/displays/modes) — use cases over backend/core only"
+
+[[bin]]
+name = "rosadeck"
+path = "src/main.rs"
+
+[dependencies]
+rosadeck-backend-hyprland = { path = "../../crates/backend-hyprland" }
+rosadeck-planner = { path = "../../crates/planner" }
+rosadeck-selector = { path = "../../crates/selector" }
+rosadeck-session-core = { path = "../../crates/session-core" }
+rosadeck-shell-integration = { path = "../../crates/shell-integration" }
+rosadeck-emulator-core = { path = "../../crates/emulator-core" }
+rosadeck-game-library = { path = "../../crates/game-library" }
+rosadeck-emulator-retroarch = { path = "../../crates/emulator-retroarch" }
+rosadeck-emulator-azahar = { path = "../../crates/emulator-azahar" }
+rosadeck-emulator-snes9x = { path = "../../crates/emulator-snes9x" }
+rosadeck-emulator-mupen64plus = { path = "../../crates/emulator-mupen64plus" }
+rosadeck-emulator-dolphin = { path = "../../crates/emulator-dolphin" }
+rosadeck-shader-manager = { path = "../../crates/shader-manager" }
+rosadeck-profiles = { path = "../../crates/profiles" }
+display-core = { path = "../../crates/display-core" }
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# SIGPIPE default, so `rosadeck library | head` exits quietly instead of
+# panicking on the closed pipe (see `restore_default_sigpipe`).
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"

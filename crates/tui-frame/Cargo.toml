@@ -1,0 +1,7 @@
+[package]
+name = "rosadeck-tui-frame"
+version = "0.1.0"
+edition = "2021"
+description = "Raw-mode-safe frame writer for Rosadeck TUIs (CRLF, no last-column wrap, pure)"
+
+[dependencies]

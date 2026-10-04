@@ -1,0 +1,44 @@
+[workspace]
+members = [
+    "f0/hypr-monitors",
+    "f0/drm-probe",
+    "f0/edid-probe",
+    "f0/socket2-listener",
+    "f0/reconcile",
+    "crates/display-core",
+    "crates/edid",
+    "crates/drm",
+    "crates/backend-hyprland",
+    "crates/planner",
+    "crates/selector",
+    "crates/session-core",
+    "crates/shell-integration",
+    "crates/game-library",
+    "crates/emulator-core",
+    "crates/emulator-retroarch",
+    "crates/emulator-dolphin",
+    "crates/emulator-azahar",
+    "crates/emulator-snes9x",
+    "crates/emulator-mupen64plus",
+    "crates/shader-manager",
+    "crates/tui-frame",
+    "crates/profiles",
+    "apps/rosadeck-cli",
+    "apps/rosadeck-daemon",
+    "apps/rosadeck-overlay",
+    "apps/rosadeck-library",
+]
+resolver = "2"
+
+# El proyecto pesaba 6,0 GB y 5,5 eran `target/debug`: con debuginfo completo,
+# cada binario de test de `rosadeck-library` mide ~135 MB (el crate `image` con
+# sus códecs dentro) y `incremental/` acumulaba 147 sesiones.
+#
+# `line-tables-only` deja los backtraces utilizables (número de línea y archivo)
+# y corta el debuginfo casi entero; `strip` quita lo que sobra de los binarios
+# que se instalan. El resto de los perfiles son los de por defecto.
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.release]
+strip = "debuginfo"

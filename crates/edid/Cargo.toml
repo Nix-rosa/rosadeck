@@ -1,0 +1,9 @@
+[package]
+name = "rosadeck-edid"
+version = "0.1.0"
+edition = "2021"
+description = "Minimal EDID parser and stable-identity for Rosadeck (pure logic, no IO)"
+
+[dependencies]
+display-core = { path = "../display-core" }
+sha2 = "0.10"

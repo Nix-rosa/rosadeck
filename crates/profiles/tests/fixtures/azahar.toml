@@ -1,0 +1,12 @@
+[emulator]
+id = "azahar"
+name = "Azahar"
+adapter = "azahar"
+binary = "azahar"
+
+[launch]
+batch = false
+
+[graphics]
+vsync = false
+fullscreen = true

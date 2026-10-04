@@ -1,0 +1,9 @@
+[package]
+name = "rosadeck-shell-integration"
+version = "0.1.0"
+edition = "2021"
+description = "Quickshell/wallpaper capability detection for Rosadeck (read-only probes, no config writes)"
+
+[dependencies]
+rosadeck-session-core = { path = "../session-core" }
+serde = { version = "1", features = ["derive"] }

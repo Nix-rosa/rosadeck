@@ -1,0 +1,9 @@
+[package]
+name = "rosadeck-emulator-core"
+version = "0.1.0"
+edition = "2021"
+description = "Emulator-agnostic launch model for Rosadeck (no display mutation, no Hyprland)"
+
+[dependencies]
+display-core = { path = "../display-core" }
+serde = { version = "1", features = ["derive"] }

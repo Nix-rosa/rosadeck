@@ -1,0 +1,10 @@
+[package]
+name = "rosadeck-selector"
+version = "0.1.0"
+edition = "2021"
+description = "Pure display-selection model for Rosadeck overlay (no IO, no UI toolkit)"
+
+[dependencies]
+display-core = { path = "../display-core" }
+rosadeck-planner = { path = "../planner" }
+serde = { version = "1", features = ["derive"] }

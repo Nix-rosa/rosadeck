@@ -1,0 +1,8 @@
+[package]
+name = "rosadeck-emulator-mupen64plus"
+version = "0.1.0"
+edition = "2021"
+description = "Mupen64Plus adapter for Rosadeck (verified flags, never touches displays)"
+
+[dependencies]
+rosadeck-emulator-core = { path = "../emulator-core" }

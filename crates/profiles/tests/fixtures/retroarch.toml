@@ -1,0 +1,14 @@
+[emulator]
+id = "retroarch"
+name = "RetroArch"
+adapter = "retroarch"
+binary = "retroarch"
+
+[launch]
+core_path = "/cores/snes9x_libretro.so"
+
+[graphics]
+vsync = true
+
+[shader]
+preset = "crt-light"

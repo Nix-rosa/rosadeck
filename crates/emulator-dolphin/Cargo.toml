@@ -1,0 +1,8 @@
+[package]
+name = "rosadeck-emulator-dolphin"
+version = "0.1.0"
+edition = "2021"
+description = "Dolphin adapter for Rosadeck (arg generation only, never touches displays)"
+
+[dependencies]
+rosadeck-emulator-core = { path = "../emulator-core" }

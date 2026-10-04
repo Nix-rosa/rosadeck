@@ -1,0 +1,8 @@
+[launch]
+id = "tv-gaming"
+display_profile = "samsung-tv"
+emulator_profile = "dolphin"
+
+[display]
+disposition = "external-only"
+policy = "max-refresh"

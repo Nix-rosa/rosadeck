@@ -1,0 +1,10 @@
+[package]
+name = "rosadeck-profiles"
+version = "0.1.0"
+edition = "2021"
+description = "Display profile persistence (TOML) and matching for Rosadeck (no backend)"
+
+[dependencies]
+display-core = { path = "../display-core" }
+serde = { version = "1", features = ["derive"] }
+toml = { version = "0.8", features = ["parse", "display"] }

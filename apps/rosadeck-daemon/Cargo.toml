@@ -1,0 +1,20 @@
+[package]
+name = "rosadeck-daemon"
+version = "0.1.0"
+edition = "2021"
+description = "Resident Hyprland session daemon for Rosadeck (orchestration only; mutations via rosadeck CLI)"
+
+[[bin]]
+name = "rosadeck-daemon"
+path = "src/main.rs"
+
+[dependencies]
+rosadeck-backend-hyprland = { path = "../../crates/backend-hyprland" }
+rosadeck-planner = { path = "../../crates/planner" }
+rosadeck-selector = { path = "../../crates/selector" }
+rosadeck-session-core = { path = "../../crates/session-core" }
+rosadeck-profiles = { path = "../../crates/profiles" }
+display-core = { path = "../../crates/display-core" }
+clap = { version = "4", features = ["derive"] }
+serde_json = "1"
+signal-hook = "0.3"
